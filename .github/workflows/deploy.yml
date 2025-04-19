@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "IP del servidor: ${{ secrets.SERVER_IP }}"
           echo "Usuario: ${{ secrets.SERVER_USER }}"
-          echo "Puerto SSH: ${{ secrets.SERVER_SSH_PORT }}"
+          echo "Puerto SSH: ${{ secrets.SERVER_PORT }}"
 
       - name: Copiar archivos al servidor con puerto SSH personalizado
         uses: appleboy/scp-action@v0.1.4
@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          port: ${{ secrets.SERVER_SSH_PORT }}
+          port: ${{ secrets.SERVER_PORT }}
           script: |
             cd /var/www/php-docker-ci-cd
             docker-compose down
