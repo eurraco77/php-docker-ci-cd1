@@ -1,9 +1,11 @@
 name: Deploy PHP App
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,8 +26,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
-          source: "."
-          target: "/var/www/php-docker-ci-cd"
+          source: "./*"
+          target: "/var/www/php-docker-ci-cd1"
 
       - name: Construir y desplegar con Docker Compose
         uses: appleboy/ssh-action@master
@@ -35,6 +37,6 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /var/www/php-docker-ci-cd
+            cd /var/www/php-docker-ci-cd1
             docker-compose down
             docker-compose up -d --build
