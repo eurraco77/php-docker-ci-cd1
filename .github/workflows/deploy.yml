@@ -38,5 +38,5 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             cd /var/www/php-docker-ci-cd1
-            docker-compose down
-            docker-compose up -d --build
+            docker compose down
+            docker compose up -d --build
